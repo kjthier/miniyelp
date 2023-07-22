@@ -1,12 +1,11 @@
 import {useEffect, useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     // Declare a state variable to hold the fetched data
     const [data, setData] = useState([]);
     // Declare a state variable to track loading state
     
-      
     useEffect(() => {
         // Function to fetch data from the API
         fetch('https://wdpt14-mern-app-server.vercel.app/restaurants/listall')
@@ -17,34 +16,7 @@ const Home = () => {
 
       console.log(data);
 
-    // call fetch function based on user input
-    // const handleSearch = () => {
-    //     const tagInputValue = document.getElementById('tagInput').value
-    //     const locationInputValue = document.getElementById('locationInput').value
-
-    //     fetchRestaurants(tagInputValue, locationInputValue)
-    //         .then((restaurants) => {
-    //             displayRestaurants(restaurants)
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error fetching data:', error)
-    //         })
-    // }
     
-    // display list of restaurants on home page
-    // const displayRestaurants = (restaurants) => {
-    //     const restaurantList = document.getElementById('restaurantList')
-
-    //     // clear previous results
-    //     restaurantList.innerHTML = ''
-
-    //     //display new list of restaurants
-    //     restaurants.forEach((restaurant) => {
-    //         const restaurantItem = document.createElement('li')
-    //         restaurantItem.innerHTML = `${restaurant.name} - Type: ${restaurant.type}, Location: ${restaurant.city}`
-    //         restaurantList.appendChild(restaurantItem)
-    //     })
-    // }
     console.log (data.listAllRestaurants)
     return (
         <>
@@ -68,16 +40,15 @@ const Home = () => {
                     </button>
                 </div>
             </header>
-            <ul id='restaurantList'>{
-                data.map((item, index) => {
-                    return (
-                        <li key={index} >{item.restaurantname}</li>
-                    )
-
-                })} 
-            </ul>
+            <ul id='restaurantList'>
+                {data.map((item, index) => (
+                    <li key={index}>
+                        <Link to={`/restaurants/${item.id}`}>
+                        {item.restaurantname}</Link>, {item.city} | Open {item.openningtime}
+                    </li>
+                ))}
+             </ul>
         </>
-    
     ) 
 }
 

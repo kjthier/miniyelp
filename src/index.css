@@ -30,13 +30,13 @@ body {
     align-items: center;
   }
 
-  .find-input {
+  .tag-input {
     padding: 0.5rem;
     margin-right: 0.5rem;
     width: 360px;
   }
 
-  .near-input {
+  .location-input {
     padding: 0.5rem;
     margin-right: 0.5rem;
 

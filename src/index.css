@@ -1,17 +1,9 @@
-body {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
   header {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 2rem;
     padding: 2rem;
-    width: 100%;
     background-color: #f0f0f0;
   }
   
@@ -39,7 +31,6 @@ body {
   .location-input {
     padding: 0.5rem;
     margin-right: 0.5rem;
-
     width: 170px;
   }
   

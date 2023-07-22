@@ -43,7 +43,7 @@ const Home = () => {
         //display new list of restaurants
         restaurants.forEach((restaurant) => {
             const restaurantItem = document.createElement('li')
-            restaurantItem.innerHTML = `${restaurant.name} - Type: ${restaurant.type}, Location: ${restaurant.location}`
+            restaurantItem.innerHTML = `${restaurant.name} - Type: ${restaurant.type}, Location: ${restaurant.city}`
             restaurantList.appendChild(restaurantItem)
         })
     }
@@ -80,4 +80,5 @@ export default Home;
 
 
 // replace apiEndpoint with our API endpoint
+// display 'type'??
 

@@ -1,26 +1,26 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const RestaurantDetails = ({ match }) => {
+const RestaurantDetails = () => {
     const [restaurant, setRestaurant] = useState(null)
 
-    useEffect(() => {
-        const restaurantId = match.params.id
-        fetchRestaurant(restaurantId)
-    }, [match.params.id])
+    // useEffect(() => {
+    //     const restaurantId = params.id
+    //     fetchRestaurant(restaurantId)
+    // }, [params.id])
 
-    const fetchRestaurant = (restaurantId) => {
-        const apiEndpoint = `API_ENDPOINT/${restaurantId}`
+    // const fetchRestaurant = (restaurantId) => {
+    //     // const apiEndpoint = `API_ENDPOINT/${restaurantId}`
 
-        return axios
-            .get(apiEndpoint)
-            .then((response) => {
-                setRestaurant(response.data)
-            })
-            .catch((error) => {
-                console.error('Error fetching restaurant details:', error)
-            })
-    }
+    //     return axios
+    //         .get(apiEndpoint)
+    //         .then((response) => {
+    //             setRestaurant(response.data)
+    //         })
+    //         .catch((error) => {
+    //             console.error('Error fetching restaurant details:', error)
+    //         })
+    // }
 
     if (!restaurant) {
         return <p>Loading...</p>

@@ -1,46 +1,29 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useParams } from 'react-router-dom';
 
 const RestaurantDetails = () => {
-    const [restaurant, setRestaurant] = useState(null)
+  const { id } = useParams();
+  const [restaurant, setRestaurant] = useState(null);
 
-    // useEffect(() => {
-    //     const restaurantId = params.id
-    //     fetchRestaurant(restaurantId)
-    // }, [params.id])
+  useEffect(() => {
+    // Fetch the specific restaurant data using the 'id' from the API
+    fetch(`https://wdpt14-mern-app-server.vercel.app/restaurants/${id}`)
+      .then(response => response.json())
+      .then(data => setRestaurant(data));
+  }, [id]);
 
-    // const fetchRestaurant = (restaurantId) => {
-    //     // const apiEndpoint = `API_ENDPOINT/${restaurantId}`
+  if (!restaurant) {
+    return <p>Loading...</p>;
+  }
 
-    //     return axios
-    //         .get(apiEndpoint)
-    //         .then((response) => {
-    //             setRestaurant(response.data)
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error fetching restaurant details:', error)
-    //         })
-    // }
-
-    if (!restaurant) {
-        return <p>Loading...</p>
-    }
-
-    return (
-        <div>
-            <h1>{restaurant.restaurantname}</h1>
-            <p>City: {restaurant.city}</p>
-            <p>Postcode: {restaurant.postcode}</p>
-            <p>Opening Time: {restaurant.openningtime}</p>
-            <p>Price: {restaurant.cuisine.price}</p>
-            <p>Tags: {restaurant.tags.join(', ')}</p>
-            <div>Comments: {/* Display comments here */}</div>
-            <div>Map: {/* Display the map here */}</div>
+  return (
+    <div>
+      <h1>{restaurant.restaurantname}</h1>
+      <p>City: {restaurant.city}</p>
+      <p>Postcode: {restaurant.postcode}</p>
+      <p>Opening Time: {restaurant.openningtime}</p>
     </div>
   );
 };
 
 export default RestaurantDetails;
-
-
-// need to add comments, map, api endpoint
